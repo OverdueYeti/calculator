@@ -1,0 +1,29 @@
+#container {
+    display: flex;
+    flex-direction: row;
+    width: 240px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.number {
+    width: 80px;
+    height: 80px;
+    font-size: 22px;
+}
+.operator {
+    width: 80px;
+    height: 80px;
+    font-size: 22px;
+}
+
+#display {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    height: 40px;
+    width: 240px;
+    background-color: beige;
+    font-size: 30px;
+
+}
