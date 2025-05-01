@@ -53,33 +53,36 @@ const display = document.querySelector("#display");
 
 
 btns.addEventListener("click", (e) => {
-    if (e.target.tagName === "BUTTON"){
-        console.log(e.target.textContent);
-        if (e.target.textContent === "="){
-            secondNum = display.textContent;        
-            answer = operate(firstNum, secondNum, operator);
-            display.textContent = answer;
-            counter = 0;
-            solved = 1;
-        } else if (!isNaN(e.target.textContent)){
-            if (solved === 1){
-                display.textContent = ""; 
-                solved = 0;
-            }
-            const btnText = e.target.textContent;
-            display.textContent = display.textContent + btnText;
-        } else {
-            if (counter === 0){                
-                firstNum = display.textContent;
-                operator = e.target.textContent;          
-                display.textContent = "";
-                counter = 1;
-            } else if (counter === 1){
-                secondNum = display.textContent;
-                firstNum = operate(firstNum, secondNum, operator);
-                display.textContent = firstNum;                
-                solved = 1;                
-            }
+    if (e.target.tagName !== "BUTTON"){
+        return;
+    }
+
+    console.log(e.target.textContent);
+    if (e.target.textContent === "="){
+        secondNum = display.textContent;        
+        answer = operate(firstNum, secondNum, operator);
+        display.textContent = answer;
+        counter = 0;
+        solved = 1;
+    } else if (!isNaN(e.target.textContent)){
+        if (solved === 1){
+            display.textContent = ""; 
+            solved = 0;
+        }
+        const btnText = e.target.textContent;
+        display.textContent = display.textContent + btnText;
+    } else {
+        if (counter === 0){                
+            firstNum = display.textContent;
+            operator = e.target.textContent;          
+            display.textContent = "";
+            counter = 1;
+        } else if (counter === 1){
+            secondNum = display.textContent;
+            firstNum = operate(firstNum, secondNum, operator);
+            display.textContent = firstNum;                
+            solved = 1;                
         }
     }
+    
 });
